@@ -46,6 +46,9 @@ gemini:
   api_key: ${{ secrets.GEMINI_API_KEY }}
   model: "gemini-2.0-flash-lite"
   delay: 10
+  retry_attempts: 2
+  retry_delay: 5
+
 data:
   max_samples: 500
   synthetic_json: "synthetic_data.json"
@@ -65,7 +68,8 @@ groq:
   temperature: 0.3
   max_tokens: 512                  # القيمة الافتراضية
   max_tokens_coding: 2048          # لمهام البرمجة
-
+  retry_attempts: 2               # عدد محاولات إعادة الطلب قبل الإبلاغ عن فشل (غير شامل خطأ الحصة)
+  retry_delay: 5
 # نموذج سريع وخفيف
                          # ثوانٍ بين الطلبات
 
@@ -74,3 +78,15 @@ processing:
   retry_attempts: 3
   retry_delay: 5
   hf_delay: 2                       # للاستخدامات المستقبلية (غير مستخدم هنا)
+  # إعدادات المصنع
+data:
+  max_samples: 500                # إجمالي العينات (تقريباً) من كل مصدر
+
+# إعدادات GROQ
+                  # ثوانٍ بين المحاولات
+
+# إعدادات Gemini (للمادة
+# إعدادات عامة
+processing:
+  hf_delay: 2                     # تأخير بين الطلبات (ثوانٍ)
+  max_consecutive_quota_errors: 3 # كم مرة يظهر خطأ الحصة قبل اعتبارها منتهية والتوقف
