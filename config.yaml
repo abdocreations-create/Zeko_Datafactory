@@ -89,4 +89,4 @@ data:
 # إعدادات عامة
 processing:
   hf_delay: 2                     # تأخير بين الطلبات (ثوانٍ)
-  max_consecutive_quota_errors: 3 # كم مرة يظهر خطأ الحصة قبل اعتبارها منتهية والتوقف
+  max_consecutive_quota_errors: 2 # كم مرة يظهر خطأ الحصة قبل اعتبارها منتهية والتوقف
